@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es-UY">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Acceso - Rescate Geométrico</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #f5f9ff;
+            background: #020817;
+            background-image: radial-gradient(ellipse at 50% -10%, #123b78 0%, #071a38 36%, #020817 75%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .panel-acceso {
+            background: linear-gradient(180deg, rgba(7, 26, 53, 0.96), rgba(3, 11, 28, 0.97));
+            border: 2px solid #176de0;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 0 20px rgba(8, 124, 255, 0.2);
+        }
+        h1 { margin-top: 0; color: #087cff; }
+        .boton {
+            display: block;
+            width: 100%;
+            font: inherit;
+            font-weight: bold;
+            text-transform: uppercase;
+            border: 1px solid #41baff;
+            color: white;
+            background: linear-gradient(180deg, #0755b4, #063271);
+            padding: 15px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .boton:hover { filter: brightness(1.35); }
+        .boton--docente { background: linear-gradient(180deg, #06152c, #020918); border-color: #2064a8; }
+        .zona-clave {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #176de0;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            background: #020918;
+            border: 1px solid #176de0;
+            color: white;
+            font: inherit;
+        }
+    </style>
+</head>
+<body>
+    <div class="panel-acceso">
+        <h1>Bienvenido</h1>
+        <p>Seleccioná tu perfil para continuar:</p>
+        <!-- Botón que lleva directo al juego -->
+        <button class="boton" onclick="irAlJuego()">🎓 Soy Estudiante</button>
+        <!-- Botón que despliega el campo de contraseña -->
+        <button class="boton boton--docente" onclick="mostrarLoginDocente()">👨‍🏫 Soy Docente</button>
+        <!-- Zona oculta que solo aparece si tocan "Soy Docente" -->
+        <div id="zona-docente" class="zona-clave" hidden>
+            <p style="font-size: 0.9rem; margin-top: 0;">Ingresá la contraseña para ver las notas:</p>
+            <input type="password" id="clave-acceso" placeholder="Contraseña...">
+            <button class="boton" onclick="verificarClave()">Ingresar a Base de Datos</button>
+        </div>
+    </div>
+    <script>
+        const URL_DEL_JUEGO = "Juego.html"; 
+        const CLAVE_SECRETA = "ProfeMati"; 
+        const URL_BASE_DE_DATOS = "https://docs.google.com/spreadsheets/d/1Rf5faGOxKKp1B6WFH1nmqtifdzIRgKr91bhhA5Ixcxw/edit?usp=sharing";
+        function irAlJuego() {
+            window.location.href = URL_DEL_JUEGO;
+        }
+        function mostrarLoginDocente() {
+            const zona = document.getElementById('zona-docente');
+            zona.hidden = !zona.hidden;
+            if (!zona.hidden) {
+                document.getElementById('clave-acceso').focus();
+            }
+        }
+        function verificarClave() {
+            const claveIngresada = document.getElementById('clave-acceso').value;   
+            if (claveIngresada === CLAVE_SECRETA) {
+                window.location.href = URL_BASE_DE_DATOS;
+            } else {
+                alert("Contraseña incorrecta. Intentá de nuevo.");
+                document.getElementById('clave-acceso').value = "";
+            }
+        }
+    </script>
+</body>
+</html>
