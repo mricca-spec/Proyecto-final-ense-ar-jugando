@@ -1,19 +1,22 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-UY">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Rescate geométrico: la misión de los triángulos</title>
     <style>
         :root {
-            --bg-color: #020817;
-            --primary-blue: #087cff;
-            --accent-cyan: #20c6ff;
-            --text-white: #f5f9ff;
-            --text-muted: #a5c3e7;
-            --highlight-gold: #ffd84d;
-            --success-green: #38e38c;
-            --error-red: #ff5369;
+            --color-fondo: #020817;
+            --color-fondo-secundario: #020918;
+            --color-panel: #06152c;
+            --color-azul-primario: #087cff;
+            --color-azul-borde: #176de0;
+            --color-azul-claro: #20c6ff;
+            --color-texto-principal: #f5f9ff;
+            --color-texto-secundario: #a5c3e7;
+            --color-dorado: #ffd84d;
+            --color-verde-exito: #38e38c;
+            --color-rojo-error: #ff5369;
         }
 
         * {
@@ -23,89 +26,89 @@
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
-            color: var(--text-white);
-            background: var(--bg-color);
-            background-image: radial-gradient(ellipse at 50% -10%, #123b78 0%, #071a38 36%, var(--bg-color) 75%);
+            color: var(--color-texto-principal);
+            background: var(--color-fondo);
+            background-image: radial-gradient(ellipse at 50% -10%, #123b78 0%, #071a38 36%, #020817 75%);
             min-height: 100vh;
         }
 
-        .app-container {
+        .contenedor-principal {
             max-width: 850px;
             margin: 0 auto;
             padding: 18px 14px 28px;
         }
 
-        .hero-header {
+        .encabezado {
             position: relative;
             background: linear-gradient(180deg, #071b3b, #030b1b);
-            border: 2px solid var(--primary-blue);
+            border: 2px solid var(--color-azul-primario);
             padding: 20px 20px 15px;
-            box-shadow: 0 0 0 3px #06152b, 0 0 26px #087cff30;
+            box-shadow: 0 0 0 3px #06152b, 0 0 26px rgba(8, 124, 255, 0.18);
             clip-path: polygon(0 0, 96% 0, 100% 22%, 100% 100%, 4% 100%, 0 78%);
         }
 
-        .hero-header__title {
+        .encabezado__titulo {
             margin: 0 0 6px;
             text-align: center;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             font-size: clamp(1.45rem, 4vw, 2.1rem);
             font-weight: 900;
-            text-shadow: 0 0 14px #087cff99;
+            text-shadow: 0 0 14px rgba(8, 124, 255, 0.6);
         }
 
-        .hero-header__subtitle {
+        .encabezado__subtitulo {
             text-align: center;
             color: #b5d8ff;
             font-size: 0.9rem;
             letter-spacing: 0.5px;
         }
 
-        .status-bar {
+        .marcador {
             display: flex;
             gap: 8px;
             flex-wrap: wrap;
             margin-top: 16px;
         }
 
-        .status-bar__item {
+        .marcador__etiqueta {
             flex: 1;
             min-width: 125px;
             text-align: center;
             padding: 8px 10px;
-            background: #020918;
+            background: var(--color-fondo-secundario);
             border: 1px solid #187dff;
             border-radius: 2px;
             font-size: 0.88rem;
             font-weight: 800;
-            box-shadow: inset 0 0 12px #087cff15;
+            box-shadow: inset 0 0 12px rgba(8, 124, 255, 0.08);
         }
 
-        .progress-track {
+        .progreso {
             height: 5px;
             background: #10284a;
             margin-top: 13px;
             border: 1px solid #174a83;
         }
 
-        .progress-track__fill {
+        .progreso__barra {
             height: 100%;
-            background: linear-gradient(90deg, #087cff, #28c7ff);
+            background: linear-gradient(90deg, var(--color-azul-primario), var(--color-azul-claro));
             width: 0;
-            transition: width 0.25s ease-in-out;
+            transition: width 0.25s;
             box-shadow: 0 0 10px #1ca6ff;
         }
 
-        .content-panel {
+        .panel {
             position: relative;
             margin-top: 16px;
             padding: 20px;
-            background: linear-gradient(180deg, #071a35f5, #030b1cf7);
-            border: 1px solid #176de0;
-            box-shadow: 0 0 0 2px #04152b, 0 0 22px #006bff14;
+            background: linear-gradient(180deg, rgba(7, 26, 53, 0.96), rgba(3, 11, 28, 0.97));
+            border: 1px solid var(--color-azul-borde);
+            box-shadow: 0 0 0 2px #04152b, 0 0 22px rgba(0, 107, 255, 0.08);
         }
 
-        .content-panel__title {
+        .panel__titulo {
             margin: 0 0 14px;
             text-align: center;
             text-transform: uppercase;
@@ -113,11 +116,17 @@
             font-size: clamp(1.08rem, 3vw, 1.45rem);
         }
 
-        .content-panel p {
+        .panel__texto {
             line-height: 1.55;
+            margin-bottom: 12px;
         }
 
-        .journey-map {
+        .panel__texto--pequeno {
+            font-size: 0.9rem;
+            color: var(--color-texto-secundario);
+        }
+
+        .mapa {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -129,28 +138,28 @@
             margin: 14px 0;
         }
 
-        .journey-map__node {
+        .mapa__isla {
             min-width: 95px;
             text-align: center;
             padding: 10px 8px;
-            background: #06152c;
+            background: var(--color-panel);
             border: 1px solid #168bff;
             font-weight: 700;
             text-transform: uppercase;
         }
 
-        .journey-map__arrow {
+        .mapa__flecha {
             color: #29baff;
             font-size: 1.5rem;
         }
 
-        .btn {
+        .boton {
             font: inherit;
             font-weight: 900;
             letter-spacing: 0.3px;
             text-transform: uppercase;
             border: 1px solid #41baff;
-            color: var(--text-white);
+            color: white;
             background: linear-gradient(180deg, #0755b4, #063271);
             padding: 12px 16px;
             cursor: pointer;
@@ -159,247 +168,223 @@
             transition: filter 0.12s, transform 0.12s;
         }
 
-        .btn:hover {
+        .boton:hover {
             filter: brightness(1.35);
             transform: translateY(-1px);
         }
 
-        .btn:focus {
-            outline: 2px solid var(--highlight-gold);
+        .boton:focus {
+            outline: 2px solid var(--color-dorado);
             outline-offset: 2px;
         }
 
-        .btn--secondary {
+        .boton--secundario {
             background: #06142a;
             border-color: #2064a8;
             color: #b7d9ff;
         }
 
-        .btn:disabled {
+        .boton:disabled {
             opacity: 0.55;
             cursor: not-allowed;
             transform: none;
         }
 
-        .quiz-options {
+        .opciones {
             display: grid;
             grid-template-columns: 1fr;
             gap: 7px;
             margin-top: 15px;
         }
 
-        .quiz-options .btn-option {
+        .opciones__boton {
             display: block;
             position: relative;
             width: 100%;
             min-height: 45px;
             margin: 0;
             padding: 10px 18px;
-            text-align: center;
-            text-transform: none;
+            text-align: left;
             letter-spacing: 0.2px;
             font-size: 1rem;
             background: linear-gradient(180deg, #06152c, #020918);
-            border: 2px solid #176de0;
-            clip-path: polygon(5% 0, 95% 0, 100% 50%, 95% 100%, 5% 100%, 0 50%);
-            box-shadow: inset 0 0 12px #087cff14;
-            color: var(--text-white);
+            border: 2px solid var(--color-azul-borde);
+            clip-path: polygon(2% 0, 98% 0, 100% 50%, 98% 100%, 2% 100%, 0 50%);
+            box-shadow: inset 0 0 12px rgba(8, 124, 255, 0.08);
             font: inherit;
+            color: white;
             cursor: pointer;
-            transition: background 0.2s, border-color 0.2s;
+            transition: border-color 0.2s, background 0.2s;
         }
 
-        .quiz-options .btn-option:hover:not(:disabled) {
+        .opciones__boton:hover:not(:disabled) {
             background: linear-gradient(180deg, #0b3470, #06152c);
             border-color: #32c5ff;
         }
 
-        .quiz-options .btn-option:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        .alert-message {
+        .devolucion {
             padding: 13px 15px;
             margin-top: 14px;
-            background: #06152c;
+            background: var(--color-panel);
             border: 1px solid #2189ff;
             border-left: 5px solid #2189ff;
             line-height: 1.5;
         }
 
-        .alert-message--success {
+        .devolucion--correcta {
             background: #03251e;
-            border-color: var(--success-green);
-            border-left-color: var(--success-green);
+            border-color: var(--color-verde-exito);
+            border-left-color: var(--color-verde-exito);
         }
 
-        .alert-message--error {
+        .devolucion--incorrecta {
             background: #2b0a18;
-            border-color: var(--error-red);
-            border-left-color: var(--error-red);
+            border-color: var(--color-rojo-error);
+            border-left-color: var(--color-rojo-error);
         }
 
-        .text-small {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        .math-problem {
+        .caja-matematica {
             font-size: 1.05rem;
-            background: #020918;
+            background: var(--color-fondo-secundario);
             border: 1px solid #167bff;
             padding: 15px;
             margin: 14px 0;
             line-height: 1.55;
-            box-shadow: inset 0 0 16px #087cff12;
+            box-shadow: inset 0 0 16px rgba(8, 124, 255, 0.07);
         }
 
-        .final-score {
+        .resultado-final {
             font-size: clamp(2.5rem, 8vw, 4.5rem);
             font-weight: 900;
-            color: var(--highlight-gold);
+            color: var(--color-dorado);
             line-height: 1.2;
             text-align: center;
-            text-shadow: 0 0 16px #ffd84d30;
+            text-shadow: 0 0 16px rgba(255, 216, 77, 0.18);
         }
 
-        .score-rubric {
+        .resultado-final__maximo {
+            font-size: 1.3rem;
+            color: var(--color-texto-principal);
+        }
+
+        .tabla-rubrica {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 20px;
+            margin-top: 15px;
         }
 
-        .score-rubric td, 
-        .score-rubric th {
+        .tabla-rubrica td, 
+        .tabla-rubrica th {
             border-bottom: 1px solid #1b477c;
             padding: 8px;
             text-align: left;
         }
 
-        .score-rubric th {
+        .tabla-rubrica th {
             color: #6dcaff;
             text-transform: uppercase;
             font-size: 0.85rem;
         }
 
-        .action-group {
-            margin-top: 14px;
-        }
-
-        .site-footer {
+        .pie-pagina {
             font-size: 0.8rem;
             color: #648bb6;
             padding: 20px 4px;
             text-align: center;
         }
 
-        @media(min-width: 650px) {
-            .quiz-options {
-                grid-template-columns: 1fr;
-            }
-            .quiz-options .btn-option {
-                min-height: 43px;
-            }
+        .controles-nivel {
+            margin-top: 14px;
         }
 
         @media(max-width: 520px) {
-            .app-container {
-                padding: 10px;
-            }
-            .content-panel {
-                padding: 15px;
-            }
-            .hero-header {
-                padding: 17px 13px;
-            }
-            .status-bar__item {
-                min-width: 100px;
-                font-size: 0.78rem;
-            }
+            .contenedor-principal { padding: 10px; }
+            .panel { padding: 15px; }
+            .encabezado { padding: 17px 13px; }
+            .marcador__etiqueta { min-width: 100px; font-size: 0.78rem; }
+            .opciones__boton { clip-path: polygon(5% 0, 95% 0, 100% 50%, 95% 100%, 5% 100%, 0 50%); }
         }
     </style>
 </head>
 <body>
-    <main class="app-container">
-        <header class="hero-header">
-            <h1 class="hero-header__title">⚡ Rescate geométrico</h1>
-            <div class="hero-header__subtitle">MISIÓN TRIÁNGULO · DESAFÍO GEOMÉTRICO · 8.º EBI</div>
+    <main class="contenedor-principal">
+        <header class="encabezado">
+            <h1 class="encabezado__titulo">⚡ Rescate geométrico</h1>
+            <div class="encabezado__subtitulo">MISIÓN TRIÁNGULO · DESAFÍO GEOMÉTRICO · 8.º EBI</div>
             
-            <nav class="status-bar">
-                <span class="status-bar__item">⭐ Puntos de juego: <span id="score">0</span></span>
-                <span class="status-bar__item">📍 Nivel: <span id="levelnum">0/12</span></span>
-                <span class="status-bar__item">🛠️ Intentos: <span id="tries">0</span></span>
-            </nav>
+            <div class="marcador">
+                <span class="marcador__etiqueta">⭐ Puntos: <span id="marcador-puntos">0</span></span>
+                <span class="marcador__etiqueta">📍 Nivel: <span id="marcador-nivel">0/12</span></span>
+                <span class="marcador__etiqueta">🛠️ Intentos: <span id="marcador-intentos">0</span></span>
+            </div>
             
-            <div class="progress-track">
-                <div class="progress-track__fill" id="bar"></div>
+            <div class="progreso">
+                <div class="progreso__barra" id="barra-progreso"></div>
             </div>
         </header>
 
-        <section class="content-panel" id="intro">
-            <h2 class="content-panel__title">¡La ciudad necesita tu ayuda!</h2>
-            <p>Una tormenta dañó los caminos y los puentes. Para rescatar a los habitantes, tendrás que superar 12 niveles que aumentan gradualmente de dificultad: desde reconocer triángulos y calcular perímetros hasta combinar áreas, perímetros y condiciones geométricas.</p>
-            <p>Si te equivocás, podés volver a intentar. Las pistas están disponibles, pero tratá de resolver cada reto por tu cuenta antes de pedir una.</p>
+        <section class="panel" id="seccion-intro">
+            <h2 class="panel__titulo">¡La ciudad necesita tu ayuda!</h2>
+            <p class="panel__texto">Una tormenta dañó los caminos y los puentes. Para rescatar a los habitantes, vas a tener que superar 12 niveles que aumentan gradualmente de dificultad: desde reconocer triángulos y calcular perímetros hasta combinar áreas, perímetros y condiciones geométricas.</p>
+            <p class="panel__texto">Si te equivocás, podés volver a intentar. Las pistas están disponibles, pero tratá de resolver cada reto por tu cuenta antes de pedir una.</p>
             
-            <div class="journey-map">
-                <div class="journey-map__node">🌉<br><b>Puente</b></div>
-                <span class="journey-map__arrow">→</span>
-                <div class="journey-map__node">📐<br><b>Taller</b></div>
-                <span class="journey-map__arrow">→</span>
-                <div class="journey-map__node">🧱<br><b>Muralla</b></div>
-                <span class="journey-map__arrow">→</span>
-                <div class="journey-map__node">🗼<br><b>Torre</b></div>
+            <div class="mapa">
+                <div class="mapa__isla">🌉<br><b>Puente</b></div>
+                <span class="mapa__flecha">→</span>
+                <div class="mapa__isla">📐<br><b>Taller</b></div>
+                <span class="mapa__flecha">→</span>
+                <div class="mapa__isla">🧱<br><b>Muralla</b></div>
+                <span class="mapa__flecha">→</span>
+                <div class="mapa__isla">🗼<br><b>Torre</b></div>
             </div>
             
-            <p class="text-small"><b>Cómo jugar:</b> lee la situación, elegí una respuesta y usá la devolución para revisar tu razonamiento. Cada nivel correcto suma puntos de juego. Al final recibirás una calificación independiente de 1 a 100 que considera los errores y los intentos.</p>
+            <p class="panel__texto panel__texto--pequeno"><b>Cómo jugar:</b> leé la situación, elegí una respuesta y usá la devolución para revisar tu razonamiento. Cada nivel correcto suma puntos de juego. Al final vas a recibir una calificación independiente de 1 a 100 que considera los errores y los intentos.</p>
             
-            <button class="btn" onclick="startGame()">Comenzar misión</button>
+            <button class="boton" onclick="iniciarJuego()">Comenzar misión</button>
         </section>
 
-        <section class="content-panel" id="game" hidden>
-            <div class="text-small" id="stage"></div>
-            <h2 class="content-panel__title" id="title"></h2>
+        <section class="panel" id="seccion-juego" hidden>
+            <div class="panel__texto--pequeno" id="etapa-actual"></div>
+            <h2 class="panel__titulo" id="titulo-nivel"></h2>
             
-            <div id="story"></div>
-            <div class="math-problem" id="question"></div>
+            <div class="panel__texto" id="consigna-nivel"></div>
+            <div class="caja-matematica" id="pregunta-nivel"></div>
             
-            <div id="answer"></div>
-            <div id="feedback" class="alert-message" hidden aria-live="polite"></div>
+            <div id="contenedor-respuestas"></div>
+            <div id="mensaje-devolucion" class="devolucion" hidden aria-live="polite"></div>
             
-            <div class="action-group">
-                <button class="btn" id="next" onclick="nextLevel()" hidden>Continuar →</button>
-                <button class="btn btn--secondary" onclick="showHint()">Pista</button>
-                <button class="btn btn--secondary" onclick="restartLevel()">Reiniciar este nivel</button>
+            <div class="controles-nivel">
+                <button class="boton" id="boton-siguiente" onclick="avanzarNivel()" hidden>Continuar →</button>
+                <button class="boton boton--secundario" onclick="mostrarPista()">Pista</button>
+                <button class="boton boton--secundario" onclick="reiniciarNivel()">Reiniciar este nivel</button>
             </div>
             
-            <div class="text-small" id="hint" hidden></div>
+            <div class="panel__texto--pequeno caja-matematica" id="mensaje-pista" hidden></div>
         </section>
 
-        <section class="content-panel" id="finish" hidden>
-            <h2 class="content-panel__title">🎉 ¡Misión completada!</h2>
-            <p id="ending"></p>
+        <section class="panel" id="seccion-final" hidden>
+            <h2 class="panel__titulo">🎉 ¡Misión completada!</h2>
+            <p class="panel__texto" id="texto-despedida"></p>
             
-            <div class="journey-map">
-                <div class="journey-map__node">🌉<br>Puente</div>
-                <div class="journey-map__node">📐<br>Taller</div>
-                <div class="journey-map__node">🧱<br>Muralla</div>
-                <div class="journey-map__node">🗼<br>Torre</div>
+            <div class="mapa">
+                <div class="mapa__isla">🌉<br>Puente</div>
+                <div class="mapa__isla">📐<br>Taller</div>
+                <div class="mapa__isla">🧱<br>Muralla</div>
+                <div class="mapa__isla">🗼<br>Torre</div>
             </div>
             
-            <h3>Resultado de la partida</h3>
-            <div class="final-score">
-                <span id="grade">0</span>
-                <span style="font-size:1.3rem"> / 100</span>
+            <h3 class="panel__titulo">Resultado de la partida</h3>
+            <div class="resultado-final">
+                <span id="calificacion-final">0</span><span class="resultado-final__maximo"> / 100</span>
             </div>
             
-            <p id="gradeLabel"></p>
-            <p id="summary"></p>
+            <p class="panel__texto" id="etiqueta-calificacion"></p>
+            <p class="panel__texto panel__texto--pequeno" id="resumen-partida"></p>
             
-            <h3>¿Cómo se calculó tu calificación?</h3>
-            <p>La calificación final es independiente de los puntos de juego. Parte de 100 y descuenta por los errores y los intentos adicionales en cada nivel. La nota mínima es 1 y la máxima es 100.</p>
+            <h3 class="panel__titulo">¿Cómo se calculó tu calificación?</h3>
+            <p class="panel__texto">La calificación final es independiente de los puntos de juego. Parte de 100 y descuenta por los errores y los intentos adicionales en cada nivel. La nota mínima es 1 y la máxima es 100.</p>
             
-            <table class="score-rubric">
+            <table class="tabla-rubrica">
                 <thead>
                     <tr>
                         <th>Concepto</th>
@@ -426,331 +411,279 @@
                 </tbody>
             </table>
             
-            <p class="text-small">Los errores se cuentan aunque luego se resuelva el nivel. Si se reinicia un nivel, los errores ya registrados no se borran. Esto hace que la nota refleje el recorrido completo y no solo las respuestas finales.</p>
+            <p class="panel__texto panel__texto--pequeno">Los errores se cuentan aunque luego se resuelva el nivel. Si se reinicia un nivel, los errores ya registrados no se borran. Esto hace que la nota refleje el recorrido completo y no solo las respuestas finales.</p>
             
-            <h3>Tu recorrido por nivel</h3>
-            <div id="breakdown"></div>
+            <h3 class="panel__titulo">Tu recorrido por nivel</h3>
+            <div id="desglose-niveles"></div>
             
-            <p><b>Para pensar:</b> ¿En qué nivel tuviste que cambiar de estrategia? ¿Qué diferencia hay entre área y perímetro? ¿Qué pasos te ayudaron a corregir un error?</p>
+            <p class="panel__texto"><b>Para pensar:</b> ¿En qué nivel tuviste que cambiar de estrategia? ¿Qué diferencia hay entre área y perímetro? ¿Qué pasos te ayudaron a corregir un error?</p>
             
-            <button class="btn" onclick="location.reload()">Jugar otra vez</button>
+            <button class="boton" onclick="location.reload()">Jugar otra vez</button>
         </section>
 
-        <footer class="site-footer">
-            Juego educativo autónomo · Geometría, resolución de problemas y pensamiento computacional
-        </footer>
+        <footer class="pie-pagina">Juego educativo autónomo · Geometría, resolución de problemas y pensamiento computacional</footer>
     </main>
 
     <script>
-        const gameLevels = [
+        const baseNiveles = [
             {
-                title: "1. ¿Puede existir el triángulo?",
-                story: "El puente necesita tres piezas de 3, 4 y 8 unidades. Antes de construirlo, comprobá si los segmentos pueden cerrar una figura triangular.",
-                question: "¿Qué decisión es correcta?",
-                options: [
-                    "Sí, cualquier tres segmentos forman un triángulo.",
-                    "No: 3 + 4 es menor que 8.",
-                    "Sí, porque el lado mayor mide 8."
-                ],
-                correctIndex: 1,
-                hintText: "La suma de dos lados cualesquiera debe ser mayor que el tercer lado.",
-                explanation: "3 + 4 = 7, y 7 no supera 8. Los segmentos no pueden cerrar un triángulo.",
-                topic: "Condición de existencia"
+                titulo: "1. ¿Puede existir el triángulo?",
+                consigna: "El puente necesita tres piezas de 3, 4 y 8 unidades. Antes de construirlo, comprobá si los segmentos pueden cerrar una figura triangular.",
+                pregunta: "¿Qué decisión es correcta?",
+                opciones: ["Sí, cualquier tres segmentos forman un triángulo.", "No: 3 + 4 es menor que 8.", "Sí, porque el lado mayor mide 8."],
+                indiceCorrecto: 1,
+                pista: "La suma de dos lados cualesquiera debe ser mayor que el tercer lado.",
+                explicacion: "3 + 4 = 7, y 7 no supera 8. Los segmentos no pueden cerrar un triángulo.",
+                tema: "Condición de existencia"
             },
             {
-                title: "2. Cinta para el puente",
-                story: "Un puente triangular tiene lados de 5 m, 5 m y 6 m. Vas a colocar una cinta por todo el borde.",
-                question: "¿Cuántos metros de cinta necesitás?",
-                options: ["11 m", "16 m", "30 m"],
-                correctIndex: 1,
-                hintText: "El perímetro es la suma de las longitudes de todos los lados.",
-                explanation: "P = 5 + 5 + 6 = 16 m. El perímetro mide el contorno.",
-                topic: "Perímetro"
+                titulo: "2. Cinta para el puente",
+                consigna: "Un puente triangular tiene lados de 5 m, 5 m y 6 m. Vas a colocar una cinta por todo el borde.",
+                pregunta: "¿Cuántos metros de cinta precisás?",
+                opciones: ["11 m", "16 m", "30 m"],
+                indiceCorrecto: 1,
+                pista: "El perímetro es la suma de las longitudes de todos los lados.",
+                explicacion: "P = 5 + 5 + 6 = 16 m. El perímetro mide el contorno.",
+                tema: "Perímetro"
             },
             {
-                title: "3. Césped para la plaza",
-                story: "La plaza triangular tiene base 8 m y altura perpendicular 3 m.",
-                question: "¿Qué superficie tiene?",
-                options: ["24 m²", "11 m²", "12 m²"],
-                correctIndex: 2,
-                hintText: "Área del triángulo = base × altura ÷ 2.",
-                explanation: "A = (8 × 3) ÷ 2 = 12 m².",
-                topic: "Área"
+                titulo: "3. Césped para la plaza",
+                consigna: "La plaza triangular tiene base 8 m y altura perpendicular 3 m.",
+                pregunta: "¿Qué superficie tiene?",
+                opciones: ["24 m²", "11 m²", "12 m²"],
+                indiceCorrecto: 2,
+                pista: "Área del triángulo = base × altura ÷ 2.",
+                explicacion: "A = (8 × 3) ÷ 2 = 12 m².",
+                tema: "Área"
             },
             {
-                title: "4. Elegí el panel",
-                story: "La muralla necesita un panel triangular de perímetro 18 unidades.",
-                question: "¿Qué conjunto de lados cumple la condición?",
-                options: ["4, 6 y 8", "5, 5 y 7", "3, 7 y 9"],
-                correctIndex: 0,
-                hintText: "Sumá las tres longitudes y compará con 18.",
-                explanation: "4 + 6 + 8 = 18. Los otros conjuntos suman 17 y 19.",
-                topic: "Comparación de perímetros"
+                titulo: "4. Elegí el panel",
+                consigna: "La muralla necesita un panel triangular de perímetro 18 unidades.",
+                pregunta: "¿Qué conjunto de lados cumple la condición?",
+                opciones: ["4, 6 y 8", "5, 5 y 7", "3, 7 y 9"],
+                indiceCorrecto: 0,
+                pista: "Sumá las tres longitudes y compará con 18.",
+                explicacion: "4 + 6 + 8 = 18. Los otros conjuntos suman 17 y 19.",
+                tema: "Comparación de perímetros"
             },
             {
-                title: "5. Corregí el plano",
-                story: "Un plano indica que un triángulo de base 10 m y altura perpendicular 4 m tiene área 40 m².",
-                question: "¿Qué corrección corresponde?",
-                options: ["Dejar 40 m².", "Cambiar a 20 m².", "Cambiar a 14 m²."],
-                correctIndex: 1,
-                hintText: "No olvides dividir entre dos en la fórmula del área triangular.",
-                explanation: "A = (10 × 4) ÷ 2 = 20 m². El error fue olvidar dividir por dos.",
-                topic: "Depuración"
+                titulo: "5. Corregí el plano",
+                consigna: "Un plano indica que un triángulo de base 10 m y altura perpendicular 4 m tiene área 40 m².",
+                pregunta: "¿Qué corrección corresponde?",
+                opciones: ["Dejar 40 m².", "Cambiar a 20 m².", "Cambiar a 14 m²."],
+                indiceCorrecto: 1,
+                pista: "No te olvides de dividir entre dos en la fórmula del área triangular.",
+                explicacion: "A = (10 × 4) ÷ 2 = 20 m². El error fue olvidar dividir por dos.",
+                tema: "Depuración"
             },
             {
-                title: "6. Perímetro desconocido",
-                story: "Un triángulo tiene lados de 7 cm, 9 cm y un tercer lado desconocido. Su perímetro es 24 cm.",
-                question: "¿Cuánto mide el tercer lado?",
-                options: ["8 cm", "15 cm", "6 cm"],
-                correctIndex: 0,
-                hintText: "Restá del perímetro conocido la suma de los dos lados.",
-                explanation: "24 − 7 − 9 = 8 cm.",
-                topic: "Cálculo inverso"
+                titulo: "6. Perímetro desconocido",
+                consigna: "Un triángulo tiene lados de 7 cm, 9 cm y un tercer lado desconocido. Su perímetro es 24 cm.",
+                pregunta: "¿Cuánto mide el tercer lado?",
+                opciones: ["8 cm", "15 cm", "6 cm"],
+                indiceCorrecto: 0,
+                pista: "Restale al perímetro conocido la suma de los dos lados.",
+                explicacion: "24 − 7 − 9 = 8 cm.",
+                tema: "Cálculo inverso"
             },
             {
-                title: "7. Área con otra medida",
-                story: "Un terreno triangular tiene área 30 m² y base 12 m. La altura es perpendicular a esa base.",
-                question: "¿Cuánto mide la altura?",
-                options: ["2,5 m", "5 m", "18 m"],
-                correctIndex: 1,
-                hintText: "30 = (12 × h) ÷ 2. Primero duplicá el área y luego dividí por la base.",
-                explanation: "h = (2 × 30) ÷ 12 = 5 m.",
-                topic: "Despeje de fórmula"
+                titulo: "7. Área con otra medida",
+                consigna: "Un terreno triangular tiene área 30 m² y base 12 m. La altura es perpendicular a esa base.",
+                pregunta: "¿Cuánto mide la altura?",
+                opciones: ["2,5 m", "5 m", "18 m"],
+                indiceCorrecto: 1,
+                pista: "30 = (12 × h) ÷ 2. Primero duplicá el área y luego dividí por la base.",
+                explicacion: "h = (2 × 30) ÷ 12 = 5 m.",
+                tema: "Despeje de fórmula"
             },
             {
-                title: "8. ¿Qué lado falta?",
-                story: "Un triángulo tiene lados de 6 cm, 8 cm y x cm. El tercer lado debe ser un número entero positivo.",
-                question: "¿Cuál de estas medidas puede ser x?",
-                options: ["2 cm", "14 cm", "9 cm"],
-                correctIndex: 2,
-                hintText: "El tercer lado debe ser mayor que la diferencia y menor que la suma de los otros dos.",
-                explanation: "Debe cumplirse 8 − 6 < x < 8 + 6, es decir, 2 < x < 14. De las opciones, 9 cumple.",
-                topic: "Desigualdad triangular"
+                titulo: "8. ¿Qué lado falta?",
+                consigna: "Un triángulo tiene lados de 6 cm, 8 cm y x cm. El tercer lado debe ser un número entero positivo.",
+                pregunta: "¿Cuál de estas medidas puede ser x?",
+                opciones: ["2 cm", "14 cm", "9 cm"],
+                indiceCorrecto: 2,
+                pista: "El tercer lado debe ser mayor que la diferencia y menor que la suma de los otros dos.",
+                explicacion: "Debe cumplirse 8 − 6 < x < 8 + 6, es decir, 2 < x < 14. De las opciones, 9 cumple.",
+                tema: "Desigualdad triangular"
             },
             {
-                title: "9. Compará dos diseños",
-                story: "Dos triángulos tienen la misma base de 10 cm. El diseño A tiene altura 4 cm y el diseño B altura 6 cm, ambas perpendiculares a la base.",
-                question: "¿Cuál afirmación es correcta?",
-                options: ["A tiene área 20 cm² y B 30 cm².", "Ambos tienen área 40 cm².", "A tiene mayor área que B."],
-                correctIndex: 0,
-                hintText: "Calculá cada área con la misma fórmula y compará los resultados.",
-                explanation: "A: (10 × 4) ÷ 2 = 20 cm². B: (10 × 6) ÷ 2 = 30 cm².",
-                topic: "Comparación de áreas"
+                titulo: "9. Compará dos diseños",
+                consigna: "Dos triángulos tienen la misma base de 10 cm. El diseño A tiene altura 4 cm y el diseño B altura 6 cm, ambas perpendiculares a la base.",
+                pregunta: "¿Cuál afirmación es correcta?",
+                opciones: ["A tiene área 20 cm² y B 30 cm².", "Ambos tienen área 40 cm².", "A tiene mayor área que B."],
+                indiceCorrecto: 0,
+                pista: "Calculá cada área con la misma fórmula y compará los resultados.",
+                explicacion: "A: (10 × 4) ÷ 2 = 20 cm². B: (10 × 6) ÷ 2 = 30 cm².",
+                tema: "Comparación de áreas"
             },
             {
-                title: "10. El borde y la superficie",
-                story: "Una señal triangular tiene lados de 13 cm, 13 cm y 10 cm. Su base es 10 cm y su altura perpendicular es 12 cm.",
-                question: "¿Cuál es su perímetro y su área, en ese orden?",
-                options: ["36 cm y 60 cm²", "36 cm y 120 cm²", "26 cm y 60 cm²"],
-                correctIndex: 0,
-                hintText: "Para el perímetro sumá los lados; para el área usá base por altura dividido entre dos.",
-                explanation: "P = 13 + 13 + 10 = 36 cm. A = (10 × 12) ÷ 2 = 60 cm².",
-                topic: "Integración de conceptos"
+                titulo: "10. El borde y la superficie",
+                consigna: "Una señal triangular tiene lados de 13 cm, 13 cm y 10 cm. Su base es 10 cm y su altura perpendicular es 12 cm.",
+                pregunta: "¿Cuál es su perímetro y su área, en ese orden?",
+                opciones: ["36 cm y 60 cm²", "36 cm y 120 cm²", "26 cm y 60 cm²"],
+                indiceCorrecto: 0,
+                pista: "Para el perímetro sumá los lados; para el área usá base por altura dividido entre dos.",
+                explicacion: "P = 13 + 13 + 10 = 36 cm. A = (10 × 12) ÷ 2 = 60 cm².",
+                tema: "Integración de conceptos"
             },
             {
-                title: "11. Detectá el razonamiento incorrecto",
-                story: "Una estudiante calcula el área de un triángulo de base 9 cm y altura 4 cm y escribe: “A = 9 + 4 = 13 cm²”.",
-                question: "¿Cuál es el error principal?",
-                options: [
-                    "Usó una suma en vez de multiplicar base por altura y dividir por dos.",
-                    "Olvidó sumar los tres lados.",
-                    "El resultado debería expresarse en centímetros, no cm²."
-                ],
-                correctIndex: 0,
-                hintText: "El área mide superficie y usa la base y la altura, no la suma de ambas.",
-                explanation: "El procedimiento correcto es A = (9 × 4) ÷ 2 = 18 cm². La suma no calcula el área.",
-                topic: "Análisis y depuración"
+                titulo: "11. Detectá el razonamiento incorrecto",
+                consigna: "Una estudiante calcula el área de un triángulo de base 9 cm y altura 4 cm y escribe: “A = 9 + 4 = 13 cm²”.",
+                pregunta: "¿Cuál es el error principal?",
+                opciones: ["Usó una suma en vez de multiplicar base por altura y dividir por dos.", "Olvidó sumar los tres lados.", "El resultado debería expresarse en centímetros, no cm²."],
+                indiceCorrecto: 0,
+                pista: "El área mide superficie y usa la base y la altura, no la suma de ambas.",
+                explicacion: "El procedimiento correcto es A = (9 × 4) ÷ 2 = 18 cm². La suma no calcula el área.",
+                tema: "Análisis y depuración"
             },
             {
-                title: "12. El desafío final",
-                story: "Para abrir la puerta de la torre, el triángulo debe tener perímetro 30 cm, base 12 cm y área 36 cm². La altura es perpendicular a la base. ¿Qué diseño satisface los datos?",
-                question: "Elegí el diseño que cumple ambas condiciones.",
-                options: [
-                    "Lados 10, 10 y 10 cm; altura 6 cm.",
-                    "Lados 9, 9 y 12 cm; altura 6 cm.",
-                    "Lados 8, 10 y 12 cm; altura 5 cm."
-                ],
-                correctIndex: 1,
-                hintText: "Comprobá por separado el perímetro y el área de cada opción.",
-                explanation: "En el segundo diseño, P = 9 + 9 + 12 = 30 cm y A = (12 × 6) ÷ 2 = 36 cm². Cumple las dos condiciones.",
-                topic: "Problema integrado"
+                titulo: "12. El desafío final",
+                consigna: "Para abrir la puerta de la torre, el triángulo debe tener perímetro 30 cm, base 12 cm y área 36 cm². La altura es perpendicular a la base. ¿Qué diseño satisface los datos?",
+                pregunta: "Elegí el diseño que cumple ambas condiciones.",
+                opciones: ["Lados 10, 10 y 10 cm; altura 6 cm.", "Lados 9, 9 y 12 cm; altura 6 cm.", "Lados 8, 10 y 12 cm; altura 5 cm."],
+                indiceCorrecto: 1,
+                pista: "Comprobá por separado el perímetro y el área de cada opción.",
+                explicacion: "En el segundo diseño, P = 9 + 9 + 12 = 30 cm y A = (12 × 6) ÷ 2 = 36 cm². Cumple las dos condiciones.",
+                tema: "Problema integrado"
             }
         ];
 
-        let currentLevelIndex = 0;
-        let totalGamePoints = 0;
-        let totalGlobalAttempts = 0;
-        let totalGlobalMistakes = 0;
-        let levelsSolved = [];
-        let levelStatistics = [];
-        let isHintCurrentlyShown = false;
+        let indiceNivelActual = 0;
+        let puntosAcumulados = 0;
+        let contadorIntentosGlobal = 0;
+        let contadorErroresGlobal = 0;
+        let nivelesCompletados = [];
+        let registroPorNivel = [];
+        let estadoPistaActiva = false;
 
-        function startGame() {
-            document.getElementById('intro').hidden = true;
-            document.getElementById('game').hidden = false;
-            renderCurrentLevel();
+        function iniciarJuego() {
+            document.getElementById('seccion-intro').hidden = true;
+            document.getElementById('seccion-juego').hidden = false;
+            renderizarNivel();
         }
 
-        function renderCurrentLevel() {
-            const currentLevelData = gameLevels[currentLevelIndex];
+        function renderizarNivel() {
+            let datosNivel = baseNiveles[indiceNivelActual];
             
-            if (!levelStatistics[currentLevelIndex]) {
-                levelStatistics[currentLevelIndex] = {
-                    attemptsCount: 0,
-                    errorsCount: 0,
-                    isCompleted: false
-                };
+            if (!registroPorNivel[indiceNivelActual]) {
+                registroPorNivel[indiceNivelActual] = { intentos: 0, errores: 0, superado: false };
             }
+            
+            document.getElementById('etapa-actual').textContent = `NIVEL ${indiceNivelActual + 1} DE ${baseNiveles.length} · ${datosNivel.tema}`;
+            document.getElementById('titulo-nivel').textContent = datosNivel.titulo;
+            document.getElementById('consigna-nivel').textContent = datosNivel.consigna;
+            document.getElementById('pregunta-nivel').textContent = datosNivel.pregunta;
+            
+            document.getElementById('mensaje-devolucion').hidden = true;
+            document.getElementById('boton-siguiente').hidden = true;
+            document.getElementById('mensaje-pista').hidden = true;
+            estadoPistaActiva = false;
 
-            document.getElementById('stage').textContent = `NIVEL ${currentLevelIndex + 1} DE ${gameLevels.length} · ${currentLevelData.topic}`;
-            document.getElementById('title').textContent = currentLevelData.title;
-            document.getElementById('story').textContent = currentLevelData.story;
-            document.getElementById('question').textContent = currentLevelData.question;
+            const contenedorOpciones = document.getElementById('contenedor-respuestas');
+            contenedorOpciones.innerHTML = '';
             
-            document.getElementById('feedback').hidden = true;
-            document.getElementById('next').hidden = true;
-            document.getElementById('hint').hidden = true;
-            isHintCurrentlyShown = false;
-
-            const answersContainer = document.getElementById('answer');
-            answersContainer.innerHTML = '';
+            const grillaBotones = document.createElement('div');
+            grillaBotones.className = 'opciones';
             
-            const optionsWrapper = document.createElement('div');
-            optionsWrapper.className = 'quiz-options';
-            
-            currentLevelData.options.forEach((optionText, index) => {
-                const optionButton = document.createElement('button');
-                optionButton.className = 'btn-option';
-                optionButton.textContent = String.fromCharCode(65 + index) + '. ' + optionText;
-                optionButton.onclick = () => handleAnswerSelection(index);
-                optionsWrapper.appendChild(optionButton);
+            datosNivel.opciones.forEach((textoOpcion, indice) => {
+                let botonInteractivo = document.createElement('button');
+                botonInteractivo.className = 'opciones__boton';
+                botonInteractivo.textContent = String.fromCharCode(65 + indice) + '.  ' + textoOpcion;
+                botonInteractivo.onclick = () => procesarEleccion(indice);
+                grillaBotones.appendChild(botonInteractivo);
             });
             
-            answersContainer.appendChild(optionsWrapper);
-            updateHeadsUpDisplay();
+            contenedorOpciones.appendChild(grillaBotones);
+            refrescarMarcadores();
         }
 
-        function handleAnswerSelection(selectedIndex) {
-            const currentLevelData = gameLevels[currentLevelIndex];
-            const currentStats = levelStatistics[currentLevelIndex];
-            const feedbackElement = document.getElementById('feedback');
+        function procesarEleccion(indiceElegido) {
+            let datosNivel = baseNiveles[indiceNivelActual];
+            let estadoActual = registroPorNivel[indiceNivelActual];
             
-            currentStats.attemptsCount++;
-            totalGlobalAttempts++;
+            estadoActual.intentos++;
+            contadorIntentosGlobal++;
             
-            if (selectedIndex === currentLevelData.correctIndex) {
-                if (!currentStats.isCompleted) {
-                    totalGamePoints += 10;
-                    currentStats.isCompleted = true;
-                    levelsSolved.push(currentLevelIndex);
+            let cuadroDevolucion = document.getElementById('mensaje-devolucion');
+            
+            if (indiceElegido === datosNivel.indiceCorrecto) {
+                if (!estadoActual.superado) {
+                    puntosAcumulados += 10;
+                    estadoActual.superado = true;
+                    nivelesCompletados.push(indiceNivelActual);
                 }
-                feedbackElement.className = 'alert-message alert-message--success';
-                feedbackElement.textContent = '¡Correcto! ' + currentLevelData.explanation;
+                cuadroDevolucion.className = 'devolucion devolucion--correcta';
+                cuadroDevolucion.textContent = '¡Correcto! ' + datosNivel.explicacion;
+                document.getElementById('boton-siguiente').hidden = false;
                 
-                document.getElementById('next').hidden = false;
-                
-                const allOptionButtons = document.querySelectorAll('#answer button');
-                allOptionButtons.forEach(button => {
-                    button.disabled = true;
-                });
+                document.querySelectorAll('#contenedor-respuestas button').forEach(boton => boton.disabled = true);
             } else {
-                totalGlobalMistakes++;
-                currentStats.errorsCount++;
-                feedbackElement.className = 'alert-message alert-message--error';
-                
-                let hintMessage = isHintCurrentlyShown ? currentLevelData.hintText : 'Si lo necesitás, podés pedir una pista.';
-                feedbackElement.textContent = 'Esa opción no cumple la condición. Revisá el razonamiento y probá otra vez. ' + hintMessage;
+                contadorErroresGlobal++;
+                estadoActual.errores++;
+                cuadroDevolucion.className = 'devolucion devolucion--incorrecta';
+                cuadroDevolucion.textContent = 'Esa opción no cumple la condición. Revisá el razonamiento y probá otra vez. ' + 
+                    (estadoPistaActiva ? datosNivel.pista : 'Si lo precisás, podés pedir una pista.');
             }
             
-            feedbackElement.hidden = false;
-            updateHeadsUpDisplay();
+            cuadroDevolucion.hidden = false;
+            refrescarMarcadores();
         }
 
-        function showHint() {
-            const hintElement = document.getElementById('hint');
-            hintElement.hidden = false;
-            hintElement.textContent = '💡 Pista: ' + gameLevels[currentLevelIndex].hintText;
-            isHintCurrentlyShown = true;
+        function mostrarPista() {
+            let contenedorPista = document.getElementById('mensaje-pista');
+            contenedorPista.hidden = false;
+            contenedorPista.textContent = '💡 Pista: ' + baseNiveles[indiceNivelActual].pista;
+            estadoPistaActiva = true;
         }
 
-        function restartLevel() {
-            renderCurrentLevel();
+        function reiniciarNivel() {
+            renderizarNivel();
         }
 
-        function nextLevel() {
-            currentLevelIndex++;
-            if (currentLevelIndex >= gameLevels.length) {
-                finishGameSession();
+        function avanzarNivel() {
+            indiceNivelActual++;
+            if (indiceNivelActual >= baseNiveles.length) {
+                concluirMision();
                 return;
             }
-            renderCurrentLevel();
+            renderizarNivel();
         }
 
-        function updateHeadsUpDisplay() {
-            document.getElementById('score').textContent = totalGamePoints;
-            document.getElementById('levelnum').textContent = Math.min(currentLevelIndex + 1, gameLevels.length) + '/' + gameLevels.length;
-            document.getElementById('tries').textContent = totalGlobalAttempts;
-            
-            const progressPercentage = (levelsSolved.length / gameLevels.length) * 100;
-            document.getElementById('bar').style.width = progressPercentage + '%';
+        function refrescarMarcadores() {
+            document.getElementById('marcador-puntos').textContent = puntosAcumulados;
+            document.getElementById('marcador-nivel').textContent = Math.min(indiceNivelActual + 1, baseNiveles.length) + '/' + baseNiveles.length;
+            document.getElementById('marcador-intentos').textContent = contadorIntentosGlobal;
+            document.getElementById('barra-progreso').style.width = (nivelesCompletados.length / baseNiveles.length * 100) + '%';
         }
 
-        function finishGameSession() {
-            document.getElementById('game').hidden = true;
-            document.getElementById('finish').hidden = false;
-            document.getElementById('ending').textContent = `Completaste los ${gameLevels.length} niveles y ayudaste a reconstruir la ciudad.`;
+        function concluirMision() {
+            document.getElementById('seccion-juego').hidden = true;
+            document.getElementById('seccion-final').hidden = false;
+            document.getElementById('texto-despedida').textContent = `Completaste los ${baseNiveles.length} niveles y ayudaste a reconstruir la ciudad.`;
             
-            let extraAttemptsPenalty = levelStatistics.reduce((accumulator, stats) => accumulator + Math.max(0, stats.attemptsCount - 1), 0);
-            let totalDeductions = (totalGlobalMistakes * 4) + (extraAttemptsPenalty * 2);
-            let finalGrade = Math.max(1, Math.min(100, 100 - totalDeductions));
+            let intentosSobrantes = registroPorNivel.reduce((acumulador, estado) => acumulador + Math.max(0, estado.intentos - 1), 0);
+            let puntosDescontados = (contadorErroresGlobal * 4) + (intentosSobrantes * 2);
+            let notaFinal = Math.max(1, Math.min(100, 100 - puntosDescontados));
             
-            document.getElementById('grade').textContent = finalGrade;
+            document.getElementById('calificacion-final').textContent = notaFinal;
             
-            let performanceLabel = '';
-            if (finalGrade >= 90) {
-                performanceLabel = 'Excelente dominio y muy pocos errores.';
-            } else if (finalGrade >= 75) {
-                performanceLabel = 'Buen desempeño; revisá los errores que aparecieron.';
-            } else if (finalGrade >= 60) {
-                performanceLabel = 'Vas avanzando; conviene practicar los procedimientos con más dificultad.';
-            } else {
-                performanceLabel = 'La misión se completó, pero necesitás repasar algunos conceptos y volver a intentarlo.';
-            }
+            let mensajeRetroalimentacion = notaFinal >= 90 ? 'Excelente dominio y muy pocos errores.' :
+                notaFinal >= 75 ? 'Buen desempeño; revisá los errores que aparecieron.' :
+                notaFinal >= 60 ? 'Vas avanzando; conviene practicar los procedimientos con más dificultad.' :
+                'La misión se completó, pero precisás repasar algunos conceptos y volver a intentarlo.';
             
-            document.getElementById('gradeLabel').textContent = performanceLabel;
+            document.getElementById('etiqueta-calificacion').textContent = mensajeRetroalimentacion;
+            document.getElementById('resumen-partida').textContent = `Puntos de juego: ${puntosAcumulados}/${baseNiveles.length * 10}. Intentos totales: ${contadorIntentosGlobal}. Respuestas incorrectas: ${contadorErroresGlobal}. Intentos adicionales después del primero: ${intentosSobrantes}. Penalización total: ${puntosDescontados} puntos. La calificación final se limita al rango de 1 a 100.`;
             
-            document.getElementById('summary').textContent = `Puntos de juego: ${totalGamePoints}/${gameLevels.length * 10}. Intentos totales: ${totalGlobalAttempts}. Respuestas incorrectas: ${totalGlobalMistakes}. Intentos adicionales después del primero: ${extraAttemptsPenalty}. Penalización total: ${totalDeductions} puntos. La calificación final se limita al rango de 1 a 100.`;
-            
-            let breakdownHtml = `
-                <table class="score-rubric">
-                    <thead>
-                        <tr>
-                            <th>Nivel</th>
-                            <th>Intentos</th>
-                            <th>Errores</th>
-                            <th>Resultado</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-            `;
-            
-            levelStatistics.forEach((stats, index) => {
-                let statusText = stats.isCompleted ? 'Superado' : 'No superado';
-                breakdownHtml += `
-                    <tr>
-                        <td>${index + 1}. ${gameLevels[index].topic}</td>
-                        <td>${stats.attemptsCount}</td>
-                        <td>${stats.errorsCount}</td>
-                        <td>${statusText}</td>
-                    </tr>
-                `;
+            let tablaHtml = '<table class="tabla-rubrica"><thead><tr><th>Nivel</th><th>Intentos</th><th>Errores</th><th>Resultado</th></tr></thead><tbody>';
+            registroPorNivel.forEach((estado, indice) => {
+                tablaHtml += `<tr><td>${indice + 1}. ${baseNiveles[indice].tema}</td><td>${estado.intentos}</td><td>${estado.errores}</td><td>${estado.superado ? 'Superado' : 'No superado'}</td></tr>`;
             });
+            tablaHtml += '</tbody></table>';
             
-            breakdownHtml += '</tbody></table>';
-            
-            document.getElementById('breakdown').innerHTML = breakdownHtml;
-            document.getElementById('bar').style.width = '100%';
-            document.getElementById('levelnum').textContent = gameLevels.length + '/' + gameLevels.length;
+            document.getElementById('desglose-niveles').innerHTML = tablaHtml;
+            document.getElementById('barra-progreso').style.width = '100%';
+            document.getElementById('marcador-nivel').textContent = baseNiveles.length + '/' + baseNiveles.length;
         }
     </script>
 </body>
