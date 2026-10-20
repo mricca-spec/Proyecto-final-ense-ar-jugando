@@ -5,7 +5,7 @@ Rescate Geométrico es un juego digital educativo para trabajar contenidos de ge
 La propuesta busca promover la participación activa, la resolución de problemas y la revisión de los errores a través de una experiencia interactiva.
 Acceso al juego
 El repositorio está publicado mediante GitHub Pages. Por eso, el proyecto se puede utilizar desde un navegador web, sin descargar los archivos.
-Página publicada: https://mricca-spec.github.io/Proyecto-final-ense-ar-jugando/
+Página publicada: https://mricca-spec.github.io/Proyecto-final-jugar-para-ensenar/
 
 El archivo index.html funciona como página de inicio y permite elegir el perfil de acceso. Si se selecciona “Soy Estudiante”, se abre el juego. La opción “Soy Docente” permite acceder a la planilla de resultados mediante el panel correspondiente.
 Archivos del repositorio
