@@ -12,6 +12,7 @@ Archivos del repositorio
 - index.html: pantalla de inicio del sitio y selección del perfil de acceso.
 - Juego.html: juego interactivo con 12 niveles progresivos, instrucciones, pistas, retroalimentación, registro de intentos y errores y calificación final de 1 a 100.
 - Documento .pdf: memoria de la propuesta didáctica, descripción del diseño, funcionamiento, puntuación, integración con Google Sheets y reflexión pedagógica.
+
 ¿Cómo funciona?
 1. El estudiante ingresa a la página publicada con GitHub Pages.
 2. En index.html, selecciona el acceso de estudiante.
