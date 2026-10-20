@@ -18,11 +18,9 @@
             --color-verde-exito: #38e38c;
             --color-rojo-error: #ff5369;
         }
-
         * {
             box-sizing: border-box;
         }
-
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
@@ -31,13 +29,11 @@
             background-image: radial-gradient(ellipse at 50% -10%, #123b78 0%, #071a38 36%, #020817 75%);
             min-height: 100vh;
         }
-
         .contenedor-principal {
             max-width: 850px;
             margin: 0 auto;
             padding: 18px 14px 28px;
         }
-
         .encabezado {
             position: relative;
             background: linear-gradient(180deg, #071b3b, #030b1b);
@@ -46,7 +42,6 @@
             box-shadow: 0 0 0 3px #06152b, 0 0 26px rgba(8, 124, 255, 0.18);
             clip-path: polygon(0 0, 96% 0, 100% 22%, 100% 100%, 4% 100%, 0 78%);
         }
-
         .encabezado__titulo {
             margin: 0 0 6px;
             text-align: center;
@@ -56,21 +51,18 @@
             font-weight: 900;
             text-shadow: 0 0 14px rgba(8, 124, 255, 0.6);
         }
-
         .encabezado__subtitulo {
             text-align: center;
             color: #b5d8ff;
             font-size: 0.9rem;
             letter-spacing: 0.5px;
         }
-
         .marcador {
             display: flex;
             gap: 8px;
             flex-wrap: wrap;
             margin-top: 16px;
         }
-
         .marcador__etiqueta {
             flex: 1;
             min-width: 125px;
@@ -83,14 +75,12 @@
             font-weight: 800;
             box-shadow: inset 0 0 12px rgba(8, 124, 255, 0.08);
         }
-
         .progreso {
             height: 5px;
             background: #10284a;
             margin-top: 13px;
             border: 1px solid #174a83;
         }
-
         .progreso__barra {
             height: 100%;
             background: linear-gradient(90deg, var(--color-azul-primario), var(--color-azul-claro));
@@ -98,7 +88,6 @@
             transition: width 0.25s;
             box-shadow: 0 0 10px #1ca6ff;
         }
-
         .panel {
             position: relative;
             margin-top: 16px;
@@ -107,7 +96,6 @@
             border: 1px solid var(--color-azul-borde);
             box-shadow: 0 0 0 2px #04152b, 0 0 22px rgba(0, 107, 255, 0.08);
         }
-
         .panel__titulo {
             margin: 0 0 14px;
             text-align: center;
@@ -115,17 +103,14 @@
             letter-spacing: 0.7px;
             font-size: clamp(1.08rem, 3vw, 1.45rem);
         }
-
         .panel__texto {
             line-height: 1.55;
             margin-bottom: 12px;
         }
-
         .panel__texto--pequeno {
             font-size: 0.9rem;
             color: var(--color-texto-secundario);
         }
-
         .mapa {
             display: flex;
             align-items: center;
@@ -137,7 +122,6 @@
             padding: 14px;
             margin: 14px 0;
         }
-
         .mapa__isla {
             min-width: 95px;
             text-align: center;
@@ -147,12 +131,10 @@
             font-weight: 700;
             text-transform: uppercase;
         }
-
         .mapa__flecha {
             color: #29baff;
             font-size: 1.5rem;
         }
-
         .boton {
             font: inherit;
             font-weight: 900;
@@ -167,36 +149,30 @@
             clip-path: polygon(7% 0, 93% 0, 100% 50%, 93% 100%, 7% 100%, 0 50%);
             transition: filter 0.12s, transform 0.12s;
         }
-
         .boton:hover {
             filter: brightness(1.35);
             transform: translateY(-1px);
         }
-
         .boton:focus {
             outline: 2px solid var(--color-dorado);
             outline-offset: 2px;
         }
-
         .boton--secundario {
             background: #06142a;
             border-color: #2064a8;
             color: #b7d9ff;
         }
-
         .boton:disabled {
             opacity: 0.55;
             cursor: not-allowed;
             transform: none;
         }
-
         .opciones {
             display: grid;
             grid-template-columns: 1fr;
             gap: 7px;
             margin-top: 15px;
         }
-
         .opciones__boton {
             display: block;
             position: relative;
@@ -216,12 +192,10 @@
             cursor: pointer;
             transition: border-color 0.2s, background 0.2s;
         }
-
         .opciones__boton:hover:not(:disabled) {
             background: linear-gradient(180deg, #0b3470, #06152c);
             border-color: #32c5ff;
         }
-
         .devolucion {
             padding: 13px 15px;
             margin-top: 14px;
@@ -230,19 +204,16 @@
             border-left: 5px solid #2189ff;
             line-height: 1.5;
         }
-
         .devolucion--correcta {
             background: #03251e;
             border-color: var(--color-verde-exito);
             border-left-color: var(--color-verde-exito);
         }
-
         .devolucion--incorrecta {
             background: #2b0a18;
             border-color: var(--color-rojo-error);
             border-left-color: var(--color-rojo-error);
         }
-
         .caja-matematica {
             font-size: 1.05rem;
             background: var(--color-fondo-secundario);
@@ -252,7 +223,6 @@
             line-height: 1.55;
             box-shadow: inset 0 0 16px rgba(8, 124, 255, 0.07);
         }
-
         .resultado-final {
             font-size: clamp(2.5rem, 8vw, 4.5rem);
             font-weight: 900;
@@ -261,42 +231,35 @@
             text-align: center;
             text-shadow: 0 0 16px rgba(255, 216, 77, 0.18);
         }
-
         .resultado-final__maximo {
             font-size: 1.3rem;
             color: var(--color-texto-principal);
         }
-
         .tabla-rubrica {
             width: 100%;
             border-collapse: collapse;
             margin-top: 15px;
         }
-
         .tabla-rubrica td, 
         .tabla-rubrica th {
             border-bottom: 1px solid #1b477c;
             padding: 8px;
             text-align: left;
         }
-
         .tabla-rubrica th {
             color: #6dcaff;
             text-transform: uppercase;
             font-size: 0.85rem;
         }
-
         .pie-pagina {
             font-size: 0.8rem;
             color: #648bb6;
             padding: 20px 4px;
             text-align: center;
         }
-
         .controles-nivel {
             margin-top: 14px;
         }
-
         @media(max-width: 520px) {
             .contenedor-principal { padding: 10px; }
             .panel { padding: 15px; }
@@ -311,79 +274,56 @@
         <header class="encabezado">
             <h1 class="encabezado__titulo">⚡ Rescate geométrico</h1>
             <div class="encabezado__subtitulo">MISIÓN TRIÁNGULO · DESAFÍO GEOMÉTRICO · 8.º EBI</div>
-            
             <div class="marcador">
                 <span class="marcador__etiqueta">⭐ Puntos: <span id="marcador-puntos">0</span></span>
                 <span class="marcador__etiqueta">📍 Nivel: <span id="marcador-nivel">0/12</span></span>
                 <span class="marcador__etiqueta">🛠️ Intentos: <span id="marcador-intentos">0</span></span>
             </div>
-            
             <div class="progreso">
                 <div class="progreso__barra" id="barra-progreso"></div>
             </div>
         </header>
-
         <section class="panel" id="seccion-intro">
             <h2 class="panel__titulo">¡La ciudad necesita tu ayuda!</h2>
             <p class="panel__texto">Una tormenta dañó los caminos y los puentes. Para rescatar a los habitantes, vas a tener que superar 12 niveles que aumentan gradualmente de dificultad: desde reconocer triángulos y calcular perímetros hasta combinar áreas, perímetros y condiciones geométricas.</p>
-            <p class="panel__texto">Si te equivocás, podés volver a intentar. Las pistas están disponibles, pero tratá de resolver cada reto por tu cuenta antes de pedir una.</p>
-            
-            <div class="mapa">
-                <div class="mapa__isla">🌉<br><b>Puente</b></div>
-                <span class="mapa__flecha">→</span>
-                <div class="mapa__isla">📐<br><b>Taller</b></div>
-                <span class="mapa__flecha">→</span>
-                <div class="mapa__isla">🧱<br><b>Muralla</b></div>
-                <span class="mapa__flecha">→</span>
-                <div class="mapa__isla">🗼<br><b>Torre</b></div>
-            </div>
-            
             <p class="panel__texto panel__texto--pequeno"><b>Cómo jugar:</b> leé la situación, elegí una respuesta y usá la devolución para revisar tu razonamiento. Cada nivel correcto suma puntos de juego. Al final vas a recibir una calificación independiente de 1 a 100 que considera los errores y los intentos.</p>
-            
+            <div style="margin-bottom: 15px; margin-top: 20px;">
+                <label for="nombre-jugador" class="panel__texto" style="display: block; font-weight: bold; margin-bottom: 5px;">Ingresá tu nombre para jugar:</label>
+                <input type="text" id="nombre-jugador" placeholder="Ej: Ana, Martín..." style="padding: 10px; border-radius: 4px; border: 1px solid var(--color-azul-borde); background: var(--color-fondo-secundario); color: white; width: 100%; max-width: 300px; font: inherit;">
+            </div>
             <button class="boton" onclick="iniciarJuego()">Comenzar misión</button>
         </section>
-
         <section class="panel" id="seccion-juego" hidden>
             <div class="panel__texto--pequeno" id="etapa-actual"></div>
             <h2 class="panel__titulo" id="titulo-nivel"></h2>
-            
             <div class="panel__texto" id="consigna-nivel"></div>
             <div class="caja-matematica" id="pregunta-nivel"></div>
-            
             <div id="contenedor-respuestas"></div>
             <div id="mensaje-devolucion" class="devolucion" hidden aria-live="polite"></div>
-            
             <div class="controles-nivel">
                 <button class="boton" id="boton-siguiente" onclick="avanzarNivel()" hidden>Continuar →</button>
                 <button class="boton boton--secundario" onclick="mostrarPista()">Pista</button>
                 <button class="boton boton--secundario" onclick="reiniciarNivel()">Reiniciar este nivel</button>
             </div>
-            
             <div class="panel__texto--pequeno caja-matematica" id="mensaje-pista" hidden></div>
         </section>
-
         <section class="panel" id="seccion-final" hidden>
             <h2 class="panel__titulo">🎉 ¡Misión completada!</h2>
             <p class="panel__texto" id="texto-despedida"></p>
-            
             <div class="mapa">
                 <div class="mapa__isla">🌉<br>Puente</div>
                 <div class="mapa__isla">📐<br>Taller</div>
                 <div class="mapa__isla">🧱<br>Muralla</div>
                 <div class="mapa__isla">🗼<br>Torre</div>
             </div>
-            
             <h3 class="panel__titulo">Resultado de la partida</h3>
             <div class="resultado-final">
                 <span id="calificacion-final">0</span><span class="resultado-final__maximo"> / 100</span>
             </div>
-            
             <p class="panel__texto" id="etiqueta-calificacion"></p>
             <p class="panel__texto panel__texto--pequeno" id="resumen-partida"></p>
-            
             <h3 class="panel__titulo">¿Cómo se calculó tu calificación?</h3>
             <p class="panel__texto">La calificación final es independiente de los puntos de juego. Parte de 100 y descuenta por los errores y los intentos adicionales en cada nivel. La nota mínima es 1 y la máxima es 100.</p>
-            
             <table class="tabla-rubrica">
                 <thead>
                     <tr>
@@ -410,20 +350,14 @@
                     </tr>
                 </tbody>
             </table>
-            
             <p class="panel__texto panel__texto--pequeno">Los errores se cuentan aunque luego se resuelva el nivel. Si se reinicia un nivel, los errores ya registrados no se borran. Esto hace que la nota refleje el recorrido completo y no solo las respuestas finales.</p>
-            
             <h3 class="panel__titulo">Tu recorrido por nivel</h3>
             <div id="desglose-niveles"></div>
-            
             <p class="panel__texto"><b>Para pensar:</b> ¿En qué nivel tuviste que cambiar de estrategia? ¿Qué diferencia hay entre área y perímetro? ¿Qué pasos te ayudaron a corregir un error?</p>
-            
             <button class="boton" onclick="location.reload()">Jugar otra vez</button>
         </section>
-
         <footer class="pie-pagina">Juego educativo autónomo · Geometría, resolución de problemas y pensamiento computacional</footer>
     </main>
-
     <script>
         const baseNiveles = [
             {
@@ -547,7 +481,6 @@
                 tema: "Problema integrado"
             }
         ];
-
         let indiceNivelActual = 0;
         let puntosAcumulados = 0;
         let contadorIntentosGlobal = 0;
@@ -555,57 +488,53 @@
         let nivelesCompletados = [];
         let registroPorNivel = [];
         let estadoPistaActiva = false;
-
+        let nombreDelJugador = ""; 
+        const URL_GOOGLE_SCRIPT = "https://script.google.com/macros/s/AKfycby4_C766dK5ZUWYXQoc8lB1jqUUqYMg263R5DztzOU0oOVI5chpDBh_gpxE6SuxwZSN/exec"; 
         function iniciarJuego() {
+            const inputNombre = document.getElementById('nombre-jugador');
+            if (inputNombre.value.trim() === "") {
+                alert("Por favor, ingresá tu nombre antes de arrancar la misión.");
+                inputNombre.focus();
+                return;
+            }
+            nombreDelJugador = inputNombre.value.trim();
             document.getElementById('seccion-intro').hidden = true;
             document.getElementById('seccion-juego').hidden = false;
             renderizarNivel();
         }
-
         function renderizarNivel() {
             let datosNivel = baseNiveles[indiceNivelActual];
-            
             if (!registroPorNivel[indiceNivelActual]) {
                 registroPorNivel[indiceNivelActual] = { intentos: 0, errores: 0, superado: false };
             }
-            
             document.getElementById('etapa-actual').textContent = `NIVEL ${indiceNivelActual + 1} DE ${baseNiveles.length} · ${datosNivel.tema}`;
             document.getElementById('titulo-nivel').textContent = datosNivel.titulo;
             document.getElementById('consigna-nivel').textContent = datosNivel.consigna;
             document.getElementById('pregunta-nivel').textContent = datosNivel.pregunta;
-            
             document.getElementById('mensaje-devolucion').hidden = true;
             document.getElementById('boton-siguiente').hidden = true;
             document.getElementById('mensaje-pista').hidden = true;
             estadoPistaActiva = false;
-
             const contenedorOpciones = document.getElementById('contenedor-respuestas');
             contenedorOpciones.innerHTML = '';
-            
             const grillaBotones = document.createElement('div');
             grillaBotones.className = 'opciones';
-            
             datosNivel.opciones.forEach((textoOpcion, indice) => {
                 let botonInteractivo = document.createElement('button');
                 botonInteractivo.className = 'opciones__boton';
                 botonInteractivo.textContent = String.fromCharCode(65 + indice) + '.  ' + textoOpcion;
                 botonInteractivo.onclick = () => procesarEleccion(indice);
                 grillaBotones.appendChild(botonInteractivo);
-            });
-            
+            });   
             contenedorOpciones.appendChild(grillaBotones);
             refrescarMarcadores();
         }
-
         function procesarEleccion(indiceElegido) {
             let datosNivel = baseNiveles[indiceNivelActual];
             let estadoActual = registroPorNivel[indiceNivelActual];
-            
             estadoActual.intentos++;
             contadorIntentosGlobal++;
-            
             let cuadroDevolucion = document.getElementById('mensaje-devolucion');
-            
             if (indiceElegido === datosNivel.indiceCorrecto) {
                 if (!estadoActual.superado) {
                     puntosAcumulados += 10;
@@ -614,8 +543,7 @@
                 }
                 cuadroDevolucion.className = 'devolucion devolucion--correcta';
                 cuadroDevolucion.textContent = '¡Correcto! ' + datosNivel.explicacion;
-                document.getElementById('boton-siguiente').hidden = false;
-                
+                document.getElementById('boton-siguiente').hidden = false;   
                 document.querySelectorAll('#contenedor-respuestas button').forEach(boton => boton.disabled = true);
             } else {
                 contadorErroresGlobal++;
@@ -623,23 +551,19 @@
                 cuadroDevolucion.className = 'devolucion devolucion--incorrecta';
                 cuadroDevolucion.textContent = 'Esa opción no cumple la condición. Revisá el razonamiento y probá otra vez. ' + 
                     (estadoPistaActiva ? datosNivel.pista : 'Si lo precisás, podés pedir una pista.');
-            }
-            
+            }   
             cuadroDevolucion.hidden = false;
             refrescarMarcadores();
         }
-
         function mostrarPista() {
             let contenedorPista = document.getElementById('mensaje-pista');
             contenedorPista.hidden = false;
             contenedorPista.textContent = '💡 Pista: ' + baseNiveles[indiceNivelActual].pista;
             estadoPistaActiva = true;
         }
-
         function reiniciarNivel() {
             renderizarNivel();
         }
-
         function avanzarNivel() {
             indiceNivelActual++;
             if (indiceNivelActual >= baseNiveles.length) {
@@ -648,42 +572,57 @@
             }
             renderizarNivel();
         }
-
         function refrescarMarcadores() {
             document.getElementById('marcador-puntos').textContent = puntosAcumulados;
             document.getElementById('marcador-nivel').textContent = Math.min(indiceNivelActual + 1, baseNiveles.length) + '/' + baseNiveles.length;
             document.getElementById('marcador-intentos').textContent = contadorIntentosGlobal;
             document.getElementById('barra-progreso').style.width = (nivelesCompletados.length / baseNiveles.length * 100) + '%';
         }
-
         function concluirMision() {
             document.getElementById('seccion-juego').hidden = true;
             document.getElementById('seccion-final').hidden = false;
             document.getElementById('texto-despedida').textContent = `Completaste los ${baseNiveles.length} niveles y ayudaste a reconstruir la ciudad.`;
-            
             let intentosSobrantes = registroPorNivel.reduce((acumulador, estado) => acumulador + Math.max(0, estado.intentos - 1), 0);
             let puntosDescontados = (contadorErroresGlobal * 4) + (intentosSobrantes * 2);
             let notaFinal = Math.max(1, Math.min(100, 100 - puntosDescontados));
-            
             document.getElementById('calificacion-final').textContent = notaFinal;
-            
             let mensajeRetroalimentacion = notaFinal >= 90 ? 'Excelente dominio y muy pocos errores.' :
                 notaFinal >= 75 ? 'Buen desempeño; revisá los errores que aparecieron.' :
                 notaFinal >= 60 ? 'Vas avanzando; conviene practicar los procedimientos con más dificultad.' :
                 'La misión se completó, pero precisás repasar algunos conceptos y volver a intentarlo.';
-            
             document.getElementById('etiqueta-calificacion').textContent = mensajeRetroalimentacion;
             document.getElementById('resumen-partida').textContent = `Puntos de juego: ${puntosAcumulados}/${baseNiveles.length * 10}. Intentos totales: ${contadorIntentosGlobal}. Respuestas incorrectas: ${contadorErroresGlobal}. Intentos adicionales después del primero: ${intentosSobrantes}. Penalización total: ${puntosDescontados} puntos. La calificación final se limita al rango de 1 a 100.`;
-            
             let tablaHtml = '<table class="tabla-rubrica"><thead><tr><th>Nivel</th><th>Intentos</th><th>Errores</th><th>Resultado</th></tr></thead><tbody>';
             registroPorNivel.forEach((estado, indice) => {
                 tablaHtml += `<tr><td>${indice + 1}. ${baseNiveles[indice].tema}</td><td>${estado.intentos}</td><td>${estado.errores}</td><td>${estado.superado ? 'Superado' : 'No superado'}</td></tr>`;
             });
             tablaHtml += '</tbody></table>';
-            
             document.getElementById('desglose-niveles').innerHTML = tablaHtml;
             document.getElementById('barra-progreso').style.width = '100%';
             document.getElementById('marcador-nivel').textContent = baseNiveles.length + '/' + baseNiveles.length;
+            let desgloseTxt = registroPorNivel.map((estado, indice) => 
+                `N${indice + 1}: ${estado.superado ? 'OK' : 'X'} (Int:${estado.intentos}, Err:${estado.errores})`
+            ).join(" | ");
+            const datosParaEnviar = {
+                nombre: nombreDelJugador,
+                nota: notaFinal,
+                puntos: puntosAcumulados,
+                intentos: contadorIntentosGlobal,
+                errores: contadorErroresGlobal,
+                desglose: desgloseTxt
+            };
+            fetch(URL_GOOGLE_SCRIPT, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(datosParaEnviar)
+            }).then(() => {
+                console.log("Resultados guardados exitosamente.");
+            }).catch(error => {
+                console.error("Error al guardar en la planilla:", error);
+            });
         }
     </script>
 </body>
